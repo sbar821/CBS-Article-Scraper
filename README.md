@@ -48,4 +48,9 @@ To get the web scraper up and running, these steps are operating on the assumpti
 
 * Watch as the story1.txt and beyond are filled with the news articles selected! (Please note it only works with BBC news articles due to specific HTML tags used)
 
+## UML Diagram
+<div align="center">
+    <img src="assets/uml.png" alt="UML Diagram">
+  </a>
+
 <p align="center">(<a href="#readme-top">back to top</a>)</p>
