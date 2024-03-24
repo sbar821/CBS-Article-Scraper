@@ -18,6 +18,9 @@ import requests
 from bs4 import BeautifulSoup
 from module_1.mod1_funct1 import get_url_from_file, get_raw_from_file
 from module_2.mod2_funct1 import write_stories_to_file, get_news_from_url
+from module_3.mod3_funct1 import get_summary
+openai_api_key=os.getenv('OPENAI_API_KEY')
+
 def main():
     url_filename = 'CS325_p2/url.txt'
     try:
@@ -28,12 +31,23 @@ def main():
 
     for url in urls[:5]:
         raw = get_raw_from_file(url)
-        rawFile = f'CS325_p2/Data/raw/raw{urls.index(url) + 1}.txt'
-        write_stories_to_file(raw,rawFile)
+        rawFile1 = f'CS325_p2/Data/raw/raw{urls.index(url) + 1}.txt'
+        #write_stories_to_file(raw,rawFile1)
 
         stories = get_news_from_url(url)
-        filename = f'CS325_p2/Data/processed/story{urls.index(url) + 1}.txt'
-        write_stories_to_file(stories, filename)
+        rawFile2 = f'CS325_p2/Data/processed/story{urls.index(url) + 1}.txt'
+        #write_stories_to_file(stories,rawFile2)
+
+    directory = 'CS325_p2/Data/processed/'
+    files = os.listdir(directory)
+
+    for file in files:
+        print(file)
+        summary = get_summary(file)
+        rawFile3 = f'CS325_p2/Data/summarized/sum{urls.index(file) + 1}.txt'
+        write_stories_to_file(summary, rawFile3)
+        
+
 
 if __name__ == "__main__":
     main()
