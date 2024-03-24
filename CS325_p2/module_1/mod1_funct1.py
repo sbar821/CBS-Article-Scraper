@@ -11,12 +11,11 @@
 # This made it easier to test functions independently of each other as well as reusability, 
 # since I am able to reuse writing to file as it only needs an array and a file name. 
 
-import os
 import requests
 from bs4 import BeautifulSoup
 
 def get_url_from_file(file):
-    with open(file, 'r') as f:
+    with open(file, 'r', encoding="utf-8") as f:
         urls = [line.strip() for line in f.readlines()]
     if not urls:
         raise ValueError("URLs not found in file")
